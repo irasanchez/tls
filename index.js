@@ -32,6 +32,10 @@ server.get("/events", (req, res) => {
     });
 });
 
+server.get("/", (req, res) => {
+  res.json({ environment: process.env.NODE_ENV });
+});
+
 server.post("/events", (req, res) => {
   db("tls")
     .insert(req.body, ["id", "person", "age", "gender"])
